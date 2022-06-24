@@ -17,8 +17,11 @@
  */
 
 template<typename T, size_t S, typename IT>
-constexpr CircularBuffer<T,S,IT>::CircularBuffer() :
-		head(buffer), tail(buffer), count(0) {
+CircularBuffer<T,S,IT>::CircularBuffer(uint32_t caps) : count(0) 
+{
+	buffer = (T*)heap_caps_malloc(S, caps);
+	head = buffer;
+	tail = buffer;
 }
 
 template<typename T, size_t S, typename IT>

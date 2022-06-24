@@ -67,7 +67,7 @@ public:
 	/**
 	 * @brief Create an empty circular buffer.
 	 */
-	constexpr CircularBuffer();
+	CircularBuffer(uint32_t = MALLOC_CAP_DEFAULT);
 
 	// disable the copy constructor
 	/** @private */
@@ -174,7 +174,7 @@ public:
 	#endif
 
 private:
-	T buffer[S];
+	T* buffer;
 	T *head;
 	T *tail;
 #ifndef CIRCULAR_BUFFER_INT_SAFE

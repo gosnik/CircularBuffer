@@ -126,6 +126,24 @@ void inline CircularBuffer<T,S,IT>::clear() {
 	count = 0;
 }
 
+template<typename T, size_t S, typename IT>
+void CircularBuffer<T,S,IT>::write(const uint8_t* data, size_t len)
+{
+	for (size_t i=0; i<len; i++)
+	{
+		push(data[i]);
+	}
+}
+
+template<typename T, size_t S, typename IT>
+void CircularBuffer<T,S,IT>::read(uint8_t* data, size_t len)
+{
+	for (size_t i=0; i<len; i++)
+	{
+		data[i] = shift();
+	}
+}
+
 #ifdef CIRCULAR_BUFFER_DEBUG
 #include <string.h>
 template<typename T, size_t S, typename IT>

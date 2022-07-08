@@ -168,6 +168,9 @@ public:
 	 */
 	void inline clear();
 
+	void write(const uint8_t*, size_t);
+	void read(uint8_t*, size_t);
+
 	#ifdef CIRCULAR_BUFFER_DEBUG
 	void inline debug(Print* out);
 	void inline debugFn(Print* out, void (*printFunction)(Print*, T));
